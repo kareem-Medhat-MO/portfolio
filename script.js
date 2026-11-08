@@ -14,6 +14,10 @@ if (themeToggle) {
     const nextTheme = useLightTheme ? "dark" : "light";
     themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} theme`);
     themeToggle.title = `Switch to ${nextTheme} theme`;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content",
+      useLightTheme ? "#f4f3ff" : "#07081b",
+    );
   });
 }
 
@@ -96,7 +100,7 @@ const updateActiveNavigation = () => {
     const isCurrent = link.getAttribute("href") === currentId;
     link.classList.toggle("active", isCurrent);
     if (isCurrent) {
-      link.setAttribute("aria-current", "page");
+      link.setAttribute("aria-current", "location");
     } else {
       link.removeAttribute("aria-current");
     }
